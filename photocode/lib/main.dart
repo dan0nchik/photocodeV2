@@ -76,6 +76,7 @@ Widget cameraText = Container(
     //возвращаем все эти виджеты собранные в колонку(столбик)
      return MaterialApp(
       title: appTitle,
+      theme: ThemeData.dark(),
       home: Scaffold(
         body: Column(
           children: [title,subtitle, cameraButton, Spacer(), /*Image.asset('assets/coder.png')*/],
@@ -95,7 +96,7 @@ class SecondPage extends StatefulWidget{
 class SecondRoute extends State<SecondPage> {
   @override
   var path;
-  //var img = Image.asset('assets/photo.png');
+  var img = Image.asset('assets/photo.png');
   //это одна большая функция, в которой находятся все виджеты. Виджеты - это все: кнопки, заголовки, текст, менюшки и т. д.
   Widget build(BuildContext context) {
     //кнопка поделиться (кодом)
@@ -113,7 +114,7 @@ class SecondRoute extends State<SecondPage> {
         backgroundColor: Color(0xFF6C26DF),
       ),
       body: ListView(
-        children: <Widget>[],
+        children: <Widget>[img],
       ),
       floatingActionButton: shareButton,
     );
