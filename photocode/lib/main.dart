@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
+import 'package:image_picker/image_picker.dart';
 //запуск приложения - на домашней странице
 void main() => runApp(MaterialApp(home: MyApp()));
 
@@ -71,7 +71,7 @@ Widget cameraText = Container(
         color: const Color(0xFF6C26DF),
       ),
     );
-
+  
 
     //возвращаем все эти виджеты собранные в колонку(столбик)
      return MaterialApp(
@@ -95,8 +95,10 @@ class SecondPage extends StatefulWidget{
 //классная страница
 class SecondRoute extends State<SecondPage> {
   @override
-  var path;
-  var img = Image.asset('assets/photo.png');
+  var img = Image.asset('assets/photo.png',
+    width: 50,
+    height: 50,
+  );
   //это одна большая функция, в которой находятся все виджеты. Виджеты - это все: кнопки, заголовки, текст, менюшки и т. д.
   Widget build(BuildContext context) {
     //кнопка поделиться (кодом)
@@ -105,7 +107,18 @@ class SecondRoute extends State<SecondPage> {
           child: Icon(Icons.share, color: Colors.white,),
           onPressed: (){},
     );
-
+      Widget galleryButton = MaterialButton(
+          color: Color(0xFF6C26DF),
+          onPressed: () async { 
+          var path = await ImagePicker.pickImage(
+          source: ImageSource.gallery,);
+          print(path);
+            path == null ? print("No image!"): 
+            setState(() {
+              img = Image.file(path);
+            });
+          },
+          ); 
 
     //возвращаем все виджеты на этой странице в виде списка (со скроллингом)
     return MaterialApp(
@@ -116,7 +129,7 @@ class SecondRoute extends State<SecondPage> {
         backgroundColor: Color(0xFF6C26DF),
       ),
       body: ListView(
-        children: <Widget>[img],
+        children: <Widget>[galleryButton,img],
       ),
       floatingActionButton: shareButton,
     ));
