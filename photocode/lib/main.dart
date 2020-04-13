@@ -113,11 +113,12 @@ class SecondRoute extends State<SecondPage> {
           var path = await ImagePicker.pickImage(
           source: ImageSource.gallery,);
           print(path);
-            path == null ? print("No image!"): 
+            if (path != null){
             setState(() {
               img = Image.file(path);
             });
-          },
+            }
+          }
           ); 
 
     //возвращаем все виджеты на этой странице в виде списка (со скроллингом)
