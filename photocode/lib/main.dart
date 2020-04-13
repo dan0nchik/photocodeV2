@@ -108,7 +108,9 @@ class SecondRoute extends State<SecondPage> {
 
 
     //возвращаем все виджеты на этой странице в виде списка (со скроллингом)
-    return Scaffold(
+    return MaterialApp(
+    theme: ThemeData.dark(),
+    home: Scaffold(
       appBar: AppBar(
         title: Text("Scan code"),
         backgroundColor: Color(0xFF6C26DF),
@@ -117,6 +119,6 @@ class SecondRoute extends State<SecondPage> {
         children: <Widget>[img],
       ),
       floatingActionButton: shareButton,
-    );
+    ));
   }
 }
