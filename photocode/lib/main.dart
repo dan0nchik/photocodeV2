@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:image_picker_modern/image_picker_modern.dart';
 //запуск приложения - на домашней странице
 void main() => runApp(MaterialApp(home: MyApp()));
 
@@ -95,6 +95,7 @@ class SecondPage extends StatefulWidget{
 //классная страница
 class SecondRoute extends State<SecondPage> {
   @override
+  var path;
   var img = Image.asset('assets/photo.png',
     width: 50,
     height: 50,
@@ -110,14 +111,14 @@ class SecondRoute extends State<SecondPage> {
       Widget galleryButton = MaterialButton(
           color: Color(0xFF6C26DF),
           onPressed: () async { 
-          var path = await ImagePicker.pickImage(
+          path = await ImagePicker.pickImage(
           source: ImageSource.gallery,);
           print(path);
-            if (path != null){
+            path == null ? Text("No") : 
             setState(() {
               img = Image.file(path);
             });
-            }
+            
           }
           ); 
 
