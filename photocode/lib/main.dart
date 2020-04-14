@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:image_picker_modern/image_picker_modern.dart';
-import 'package:tesseract_ocr/tesseract_ocr.dart';
 //запуск приложения - на домашней странице
 void main() => runApp(MaterialApp(home: MyApp()));
 
@@ -97,7 +96,6 @@ class SecondPage extends StatefulWidget{
 class SecondRoute extends State<SecondPage> {
   @override
   var path;
-  var extractedText = 'Unknown';
   var img = Image.asset('assets/photo.png',
     width: 50,
     height: 50,
@@ -120,10 +118,7 @@ class SecondRoute extends State<SecondPage> {
             setState(() {
               img = Image.file(path);
             });
-          extractedText = await TesseractOcr.extractText('assets/photo.png');
-          if(extractedText == null){
-            extractedText = "No text detected!";
-          }
+            
           }
           ); 
 
@@ -136,7 +131,7 @@ class SecondRoute extends State<SecondPage> {
         backgroundColor: Color(0xFF6C26DF),
       ),
       body: ListView(
-        children: <Widget>[galleryButton,img, Text(extractedText)],
+        children: <Widget>[galleryButton,img],
       ),
       floatingActionButton: shareButton,
     ));
