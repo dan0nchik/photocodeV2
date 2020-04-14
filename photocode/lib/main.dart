@@ -76,7 +76,7 @@ Widget cameraText = Container(
     //возвращаем все эти виджеты собранные в колонку(столбик)
      return MaterialApp(
       title: appTitle,
-      theme: ThemeData.dark(),
+      
       home: Scaffold(
         body: Column(
           children: [title,subtitle, cameraButton, Spacer(), /*Image.asset('assets/coder.png')*/],
@@ -97,8 +97,6 @@ class SecondRoute extends State<SecondPage> {
   @override
   var path;
   var img = Image.asset('assets/photo.png',
-    width: 50,
-    height: 50,
   );
   //это одна большая функция, в которой находятся все виджеты. Виджеты - это все: кнопки, заголовки, текст, менюшки и т. д.
   Widget build(BuildContext context) {
@@ -124,7 +122,7 @@ class SecondRoute extends State<SecondPage> {
 
     //возвращаем все виджеты на этой странице в виде списка (со скроллингом)
     return MaterialApp(
-    theme: ThemeData.dark(),
+    
     home: Scaffold(
       appBar: AppBar(
         title: Text("Scan code"),
